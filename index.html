@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Country Explorer</h1>
+    <p class="subtitle">Search, filter, and compare countries using the REST Countries API</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search by country name..."
+        autocomplete="off"
+        aria-label="Search countries"
+      />
+      <select id="region" aria-label="Filter by region">
+        <option value="">All Regions</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">Americas</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+      <button id="clear-compare" class="btn-secondary" style="display:none">
+        Clear Compare (<span id="compare-count">0</span>)
+      </button>
+    </div>
+
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <div id="compare-panel" style="display:none">
+      <h2>Comparison</h2>
+      <div id="compare-table-wrap"></div>
+    </div>
+
+    <div id="results" class="grid"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
