@@ -1,0 +1,207 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --card: #1e2130;
+  --border: #2e3247;
+  --text: #e8eaf6;
+  --muted: #8b90b0;
+  --accent: #5c6bc0;
+  --accent-hover: #7986cb;
+  --danger: #ef5350;
+  --success: #66bb6a;
+  --warning: #ffa726;
+  --radius: 10px;
+  --font: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+}
+
+header {
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}
+
+main { max-width: 1100px; margin: 0 auto; }
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"], select {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"] { flex: 1; min-width: 220px; }
+input[type="text"]:focus, select:focus { border-color: var(--accent); }
+
+select { cursor: pointer; }
+
+button {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-family: var(--font);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, transform 0.1s;
+}
+
+button:active { transform: scale(0.97); }
+
+.btn-secondary {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover { background: var(--card); border-color: var(--accent); }
+
+.btn-compare {
+  width: 100%;
+  margin-top: 0.75rem;
+  background: transparent;
+  border-color: var(--border);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.btn-compare:hover { border-color: var(--accent); color: var(--accent-hover); }
+.btn-compare.selected { border-color: var(--accent); color: var(--accent-hover); background: rgba(92,107,192,0.1); }
+
+#status {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  min-height: 1.4em;
+}
+
+#status.error { color: var(--danger); }
+#status.loading::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--muted);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.flag {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.card .meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.card .meta span { color: var(--text); }
+
+/* Compare panel */
+#compare-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+#compare-panel h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+#compare-table-wrap { overflow-x: auto; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+}
+
+th, td {
+  padding: 0.55rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th { color: var(--muted); font-weight: 500; background: var(--card); }
+td:first-child { color: var(--muted); white-space: nowrap; }
+td { color: var(--text); }
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  padding: 3rem;
+  font-size: 1rem;
+}
