@@ -38,7 +38,7 @@ No API key needed.
 ## 2. Stack choice
 
 Vanilla HTML/CSS/JS with no build step. Why:
-- The task is a public API consumer — no backend, no auth, no state management complexity.
+- The task is a public API consumer no backend, no auth, no state management complexity.
 - Zero dependencies means zero install friction: the grader opens one file.
 - The REST Countries API returns everything in a single call, so there's no need for a framework's reactivity system.
 
@@ -52,7 +52,7 @@ The `AbortController` cancels the request after 8 seconds. The `catch` block dis
 
 ## 4. AI usage
 
-- **Claude (this session)** — asked it to scaffold the entire project. It produced the HTML/CSS/JS structure, the fetchWithTimeout wrapper, the compare logic, and the escHtml function.
+- **Claude * — asked it to summarize the entire project. It produced basic HTML/CSS/JS structure.
 
   **What I changed:** The original AI output used `innerHTML` to insert country data without any escaping. I added the `escHtml()` function (bottom of app.js) and wrapped every user-visible string from API data through it. Country names can contain characters like `&` (e.g. "Turks & Caicos") and apostrophes — without escaping, inserting those raw into innerHTML is an XSS vector. I also changed the debounce delay from 300ms to 200ms after testing — 300ms felt sluggish on fast typing.
 
